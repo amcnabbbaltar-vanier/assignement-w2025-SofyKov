@@ -4,7 +4,23 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static int score;
+    private static int score = 0;
+    public static GameManager Instance;
+
+    void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
+    
+    public void IncrementScore()
+    {
+        score++;
+    }
     
     // Start is called before the first frame update
     void Start()
