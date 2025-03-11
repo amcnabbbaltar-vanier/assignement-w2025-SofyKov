@@ -14,9 +14,9 @@ public class AnimatorController : MonoBehaviour
         characterMovement = GetComponent<CharacterMovement>();
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider collider)
     {
-        if (other.CompareTag("Portal"))
+        if (collider.CompareTag("Portal"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }

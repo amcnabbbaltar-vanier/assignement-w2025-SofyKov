@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Portal
+  - Star
+  - Trap
+  - New tag
   layers:
   - Default
   - TransparentFX
