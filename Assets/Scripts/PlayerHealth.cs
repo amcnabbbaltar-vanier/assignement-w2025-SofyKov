@@ -5,9 +5,14 @@ public class PlayerHealth : MonoBehaviour
 {
     
     public int maxHealth = 3;
-    private int currHealth;
+    public static int currHealth;
     public Slider healthBar;
-    private GameManager gameManager;
+    public PlayerHealth Instance;
+
+    void Awake()
+    {
+    
+    }
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -33,25 +38,10 @@ public class PlayerHealth : MonoBehaviour
         healthBar.value = currHealth;
         if(currHealth <= 0)
         {
-            Restart();
+            currHealth = maxHealth;
+            GameManager.Instance.levelHandling();
+            
         }
     }
 
-    void Restart()
-    {
-        //
-        currHealth = maxHealth;
-
-        //Removes
-        gameManager.RestartLevelScore();
-
-        //Reloads the current scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -7,7 +7,7 @@ public class StarController: MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            GameManager.Instance.IncrementScore();
+            ScoreManager.Instance.IncrementScore();
             Destroy(gameObject);
         }
     }

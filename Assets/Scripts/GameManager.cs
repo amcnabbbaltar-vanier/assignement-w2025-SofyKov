@@ -7,14 +7,16 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private static int score = 0;
-    public int totalScore = 0;
+   
     public static GameManager Instance;
     public TextMeshProUGUI scoreDisplay;
     public GameObject scorePanel;
 
+
     void Awake()
     {
+       // totalScore = PlayerPrefs.GetInt("totalScore");
+
         if(Instance == null)
         {
             Instance = this;
@@ -25,22 +27,31 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
-    public void IncrementScore()
-    {
-        score++;
-        totalScore += score;
+    public void levelHandling(){
+       
+        RestartLevelScore();
+        Destroy(GameObject.FindWithTag("Player"));// kill if lives <= 0
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+  
     }
-
+  
     public void RestartLevelScore()
     {
-        totalScore = totalScore - score;
-        score = 0;
+        scoreDisplay.text = ScoreManager.Instance.GetTotalScore().ToString();
+        //ScoreManager.Instance.totalScore = ScoreManager.Instance.totalScore - ScoreManager.Instance.score;
+        //score = 0;
+        //PlayerPrefs.SetInt("totalScore", ScoreManager.Instance.totalScore);
+       // PlayerPrefs.Save();
+       // Debug.Log("Score: " + ScoreManager.Instance.totalScore);
     }
+
 
     public void EndOfLevelScore()
     {
-        score = 0;
+       // ScoreManager.Instance.score = 0;
+       // PlayerPrefs.SetInt("totalScore", ScoreManager.Instance.totalScore);
+        PlayerPrefs.Save();
+        //Debug.Log("Score: " + ScoreManager.Instance.totalScore);
     }
     
     // Start is called before the first frame update
@@ -49,13 +60,14 @@ public class GameManager : MonoBehaviour
         scorePanel.SetActive(true);
         if(Instance)
         {
-            scoreDisplay.text = "Score: " + score.ToString();
+            //scoreDisplay.text = "Score: " + ScoreManager.Instance.score.ToString();
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        scoreDisplay.text = "Score: " + totalScore;
+       // ScoreManager.Instance.totalScore = PlayerPrefs.GetInt("totalScore");
+        scoreDisplay.text = "Score: " + ScoreManager.Instance.GetTotalScore();
     }
 }

@@ -14,14 +14,6 @@ public class AnimatorController : MonoBehaviour
         characterMovement = GetComponent<CharacterMovement>();
     }
 
-    void OnTriggerEnter(Collider collider)
-    {
-        if (collider.CompareTag("Portal"))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-    }
-
     public void LateUpdate()
     {
        UpdateAnimator();
@@ -31,5 +23,14 @@ public class AnimatorController : MonoBehaviour
     void UpdateAnimator()
     {
         // animator.SetFloat("CharacterSpeed", rb.linearVelocity.magnitude);
+        float speed =  characterMovement.groundSpeed;
+        animator.SetFloat("CharacterSpeed", speed);
+        animator.SetBool("IsGrounded", characterMovement.IsGrounded);
+
+        if(!characterMovement.IsGrounded && characterMovement.jumpCounter == 2)
+        {
+            animator.SetTrigger("doFlip");
+        }
     }
+
 }

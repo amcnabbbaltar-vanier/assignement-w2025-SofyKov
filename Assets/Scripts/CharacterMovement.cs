@@ -27,6 +27,7 @@ public class CharacterMovement : MonoBehaviour
     private float moveZ; // Stores vertical movement input (W/S or Up/Down Arrow)
     private bool jumpRequest; // Flag to check if the player requested a jump
     private Vector3 moveDirection; // Stores the calculated movement direction
+    public int jumpCounter;
 
     // ============================== Animation Variables ==============================
     [Header("Anim values")]
@@ -161,6 +162,13 @@ public class CharacterMovement : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); // Apply force upwards
             jumpRequest = false; // Reset jump request after applying jump
+            jumpCounter = 1;
+        }
+        else if(jumpRequest && !IsGrounded && jumpCounter == 1)
+        {
+            rb.AddForce(Vector3.up * (jumpForce + 3f), ForceMode.Impulse);
+            jumpRequest = false; 
+            jumpCounter = 2;
         }
     }
 
