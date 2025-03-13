@@ -399,17 +399,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1627607111}
   m_SourcePrefab: {fileID: 100100000, guid: e3fe52d757dbacb43a943a5d311369b8, type: 3}
---- !u!1 &331560451 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4261171201972362510, guid: e2be9ad9c7ee773498c22c7aaf1d94c4, type: 3}
-  m_PrefabInstance: {fileID: 1699351367519811169}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &331560452 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3683423394886044367, guid: e2be9ad9c7ee773498c22c7aaf1d94c4, type: 3}
   m_PrefabInstance: {fileID: 1699351367519811169}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331560451}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d42b3a90462474948900441675484c56, type: 3}
@@ -1533,6 +1528,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7046531774484535864, guid: 450c730090eee454db9b9f39d6fc7065, type: 3}
+      propertyPath: pausMenuPanel
+      value: 
+      objectReference: {fileID: 638888244}
     - target: {fileID: 7526213556872946656, guid: 450c730090eee454db9b9f39d6fc7065, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1616,7 +1615,19 @@ PrefabInstance:
     - target: {fileID: 9017440695776089553, guid: 450c730090eee454db9b9f39d6fc7065, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 331560451}
+      objectReference: {fileID: 331560452}
+    - target: {fileID: 9017440695776089553, guid: 450c730090eee454db9b9f39d6fc7065, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 9017440695776089553, guid: 450c730090eee454db9b9f39d6fc7065, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseMenuController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9017440695776089553, guid: 450c730090eee454db9b9f39d6fc7065, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

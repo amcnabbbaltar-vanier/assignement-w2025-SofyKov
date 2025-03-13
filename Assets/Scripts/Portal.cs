@@ -22,14 +22,6 @@ public class Portal : MonoBehaviour
             GameManager.Instance.ResetLevelScore();
             Destroy(GameObject.FindWithTag("Player"));
 
-            // Debug.Log(SceneManager.GetActiveScene().name);
-
-            // if(SceneManager.GetActiveScene().name == "Level4")
-            // {
-            //     Debug.Log("In");
-            //     GameManager.Instance.SaveAllData();
-            // }
-
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
