@@ -3,10 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
+    //private float startTime;
     
     public void StartGame()
     {
         Destroy(GameObject.FindWithTag("Player"));
+        //startTime = startTime.time;
+        PlayerPrefs.SetFloat("PlayerTime", Time.time);
         SceneManager.LoadScene("Level1");
     }
 

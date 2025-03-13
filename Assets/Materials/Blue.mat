@@ -96,14 +96,14 @@ Material:
     - _SoftParticlesNearFadeDistance: 1
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TwinkleAmount: 0.466
+    - _TwinkleAmount: 0.437
     - _TwinkleEnabled: 1
     - _TwinkleSpeed: 1
     - _UVSec: 0
     - _ZWrite: 0
     m_Colors:
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 0.45594516, g: 0.52222943, b: 0.8867924, a: 1}
+    - _Color: {r: 0.41037738, g: 1, b: 0.7450639, a: 1}
     - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0.10234957, g: 0.4424244, b: 0.8679245, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: Infinity, b: 0, a: 0}

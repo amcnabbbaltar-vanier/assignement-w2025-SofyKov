@@ -25,8 +25,8 @@ public class TrapRandomMovement : MonoBehaviour
         }
 
         
-        Debug.Log("Floor centered" + floor.bounds.center);
-        Debug.Log("Floor size: " + floor.bounds.size);
+       // Debug.Log("Floor centered" + floor.bounds.center);
+       // Debug.Log("Floor size: " + floor.bounds.size);
 
         SetNewDirection();
     }

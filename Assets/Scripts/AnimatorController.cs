@@ -46,9 +46,11 @@ public class AnimatorController : MonoBehaviour
         animator.SetBool("IsGrounded", characterMovement.IsGrounded);
 
         //Debug.Log(allowDoubleJump);
+        //Debug.Log("isGorunde: " + characterMovement.IsGrounded + ", jump counter: " + characterMovement.jumpCounter + " , allow jump: " + characterMovement.allowDoubleJump);
        
         if(!characterMovement.IsGrounded && characterMovement.jumpCounter == 2 && characterMovement.allowDoubleJump == true)
         {
+            
             EnableDoubleJump(duration);
         }
     }

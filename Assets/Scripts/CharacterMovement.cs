@@ -172,6 +172,7 @@ public class CharacterMovement : MonoBehaviour
             rb.AddForce(Vector3.up * (jumpForce + 3f), ForceMode.Impulse);
             jumpRequest = false; 
             jumpCounter = 2;
+            Debug.Log("Inside chr movement handlejump ");
         }
     }
 
