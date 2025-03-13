@@ -9,38 +9,49 @@ public class TrapRandomMovement : MonoBehaviour
     private float floorY;
  
     private Vector3 objDirection;
+    private Vector3 targPosition;
     private float timer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameObject floor = GameObject.Find("Floor");
-        // float floorSize = floor.GetComponent<MeshRenderer>().bounds.size.magnitude;
-
-         floorX = floor.GetComponent<MeshRenderer>().bounds.size.x;
-         floorY = floor.GetComponent<MeshRenderer>().bounds.size.y;
         SetNewDirection();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        transform.Translate(objDirection * speed * Time.deltaTime);
-
-        timer -= Time.deltaTime;
-        if(timer <= 0)
-        {
-            SetNewDirection();
-        }
+       MoveTrap();
     }
 
     void SetNewDirection()
     {
-        float randomX = Random.Range(-floorX / 2, floorY / 2);
-        float randomZ = Random.Range(-floorX / 2, floorY / 2);
+        
+        GameObject floor = GameObject.Find("Floor");
+
+        floorX = floor.GetComponent<MeshRenderer>().bounds.size.x;
+        floorY = floor.GetComponent<MeshRenderer>().bounds.size.y;
+
+        float randomX = Random.Range(-floorX / 2, floorY / 2) * transform.localScale.x;
+        float randomZ = Random.Range(-floorX / 2, floorY / 2) * transform.localScale.z;
       
-        objDirection = new Vector3(randomX, 0, randomZ).normalized;
-        timer = movingTime;
+        targPosition = new Vector3(randomX, 0, randomZ);
+        //timer = movingTime;
+    }
+
+    void MoveTrap()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, targPosition, speed * Time.deltaTime);
+
+        if(Vector3.Distance(transform.position, targPosition) < 0.05f)
+        {
+            SetNewDirection();
+        }
+
+        // timer -= Time.deltaTime;
+        // if(timer <= 0)
+        // {
+        //     SetNewDirection();
+        // }
     }
 }

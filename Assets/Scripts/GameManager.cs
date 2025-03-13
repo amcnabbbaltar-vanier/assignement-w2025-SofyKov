@@ -1,23 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-   
-    public static GameManager Instance;
     public TextMeshProUGUI scoreDisplay;
-    public GameObject scorePanel;
+    private CharacterMovement characterMovement;
+    //public Panel scorePanel;
 
+    private static int totalScore = 0; // Static variable to store total score across scenes
+    private static int levelScore = 0;  
+    public static GameManager Instance;
 
     void Awake()
     {
-       // totalScore = PlayerPrefs.GetInt("totalScore");
-
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
@@ -27,47 +25,72 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void levelHandling(){
-       
-        RestartLevelScore();
-        Destroy(GameObject.FindWithTag("Player"));// kill if lives <= 0
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-  
-    }
-  
-    public void RestartLevelScore()
-    {
-        scoreDisplay.text = ScoreManager.Instance.GetTotalScore().ToString();
-        //ScoreManager.Instance.totalScore = ScoreManager.Instance.totalScore - ScoreManager.Instance.score;
-        //score = 0;
-        //PlayerPrefs.SetInt("totalScore", ScoreManager.Instance.totalScore);
-       // PlayerPrefs.Save();
-       // Debug.Log("Score: " + ScoreManager.Instance.totalScore);
-    }
 
-
-    public void EndOfLevelScore()
-    {
-       // ScoreManager.Instance.score = 0;
-       // PlayerPrefs.SetInt("totalScore", ScoreManager.Instance.totalScore);
-        PlayerPrefs.Save();
-        //Debug.Log("Score: " + ScoreManager.Instance.totalScore);
-    }
-    
-    // Start is called before the first frame update
     void Start()
     {
-        scorePanel.SetActive(true);
-        if(Instance)
+        FindPLayer();
+       
+        scoreDisplay = GameObject.Find("ScoreText")?.GetComponent<TextMeshProUGUI>();
+
+        if(scoreDisplay == null)
         {
-            //scoreDisplay.text = "Score: " + ScoreManager.Instance.score.ToString();
+            Debug.Log("score dispplay");
+        }
+        if(totalScore == null)
+        {
+            Debug.Log("total score ");
+        }
+
+        scoreDisplay.text = "Score: " + totalScore;
+    }
+
+    public void IncrementScore()
+    {
+        levelScore = levelScore + 50;
+        totalScore = levelScore;
+        scoreDisplay = GameObject.Find("ScoreText")?.GetComponent<TextMeshProUGUI>();
+        scoreDisplay.text = "Score: " + totalScore;
+    }
+
+
+    public void levelHandling()
+    {
+        RestartLevelScore();
+        //Destroy(GameObject.FindWithTag("Player")); // Destroy player on level restart
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                scoreDisplay = GameObject.Find("ScoreText")?.GetComponent<TextMeshProUGUI>();
+
+    }
+
+    public void RestartLevelScore()
+    {
+        levelScore = 0;
+        totalScore = totalScore - levelScore;
+    }
+
+    public void ActivatFlip()
+    {
+        // if(animatorController == null)
+        // {
+        //     animatorController = GetComponent<AnimatorController>();
+        // }
+        characterMovement.allowDoubleJump = true;
+        ///pl = true;
+    }
+
+    void Update()
+    {
+        // Continuously update the score display
+    }
+
+    void FindPLayer(){
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if(player != null ){
+            characterMovement = player.GetComponent<CharacterMovement>();
+        }else{
+            Debug.LogError("No player");
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-       // ScoreManager.Instance.totalScore = PlayerPrefs.GetInt("totalScore");
-        scoreDisplay.text = "Score: " + ScoreManager.Instance.GetTotalScore();
-    }
+    
 }

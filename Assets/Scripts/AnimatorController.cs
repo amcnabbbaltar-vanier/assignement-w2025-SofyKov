@@ -8,6 +8,24 @@ public class AnimatorController : MonoBehaviour
     private Animator animator;
     private CharacterMovement characterMovement;
     private Rigidbody rb;
+    //public bool allowDoubleJump ;
+
+    public float duration = 0.30f;
+    public static AnimatorController Instance;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public void Start()
     {
         animator = GetComponent<Animator>();
@@ -27,10 +45,25 @@ public class AnimatorController : MonoBehaviour
         animator.SetFloat("CharacterSpeed", speed);
         animator.SetBool("IsGrounded", characterMovement.IsGrounded);
 
-        if(!characterMovement.IsGrounded && characterMovement.jumpCounter == 2)
+        //Debug.Log(allowDoubleJump);
+       
+        if(!characterMovement.IsGrounded && characterMovement.jumpCounter == 2 && characterMovement.allowDoubleJump == true)
         {
-            animator.SetTrigger("doFlip");
+            EnableDoubleJump(duration);
         }
+    }
+
+    public void EnableDoubleJump(float duration)
+    {
+       // allowDoubleJump = true;
+        // animator.SetBool("allowDoubleJump", true);
+        animator.SetTrigger("doFlip");
+        Invoke("DisableDoubleJump", duration);
+    }
+
+    public void DisableDoubleJump()
+    {
+       // animator.SetBool("allowDoubleJump", false);
     }
 
 }

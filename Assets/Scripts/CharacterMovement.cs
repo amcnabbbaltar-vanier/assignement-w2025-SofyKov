@@ -27,7 +27,9 @@ public class CharacterMovement : MonoBehaviour
     private float moveZ; // Stores vertical movement input (W/S or Up/Down Arrow)
     private bool jumpRequest; // Flag to check if the player requested a jump
     private Vector3 moveDirection; // Stores the calculated movement direction
+
     public int jumpCounter;
+    public bool allowDoubleJump;
 
     // ============================== Animation Variables ==============================
     [Header("Anim values")]
@@ -157,6 +159,7 @@ public class CharacterMovement : MonoBehaviour
     /// </summary>
     private void HandleJump()
     {
+        //Debug.Log("Grounded: " +IsGrounded);
         // Apply jump force only if jump was requested and the character is grounded
         if (jumpRequest && IsGrounded)
         {
@@ -164,7 +167,7 @@ public class CharacterMovement : MonoBehaviour
             jumpRequest = false; // Reset jump request after applying jump
             jumpCounter = 1;
         }
-        else if(jumpRequest && !IsGrounded && jumpCounter == 1)
+      if(jumpRequest && !IsGrounded && jumpCounter == 1 && allowDoubleJump == true)
         {
             rb.AddForce(Vector3.up * (jumpForce + 3f), ForceMode.Impulse);
             jumpRequest = false; 

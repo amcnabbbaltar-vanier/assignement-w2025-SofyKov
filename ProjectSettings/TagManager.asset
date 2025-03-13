@@ -7,7 +7,7 @@ TagManager:
   - Portal
   - Star
   - Trap
-  - New tag
+  - jumpToken
   layers:
   - Default
   - TransparentFX

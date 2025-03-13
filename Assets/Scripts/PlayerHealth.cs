@@ -31,7 +31,6 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-
     public void trapDamage()
     {
         currHealth -= 1;
@@ -40,7 +39,6 @@ public class PlayerHealth : MonoBehaviour
         {
             currHealth = maxHealth;
             GameManager.Instance.levelHandling();
-            
         }
     }
 
