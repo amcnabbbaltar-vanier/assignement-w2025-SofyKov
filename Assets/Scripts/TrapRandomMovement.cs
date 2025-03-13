@@ -6,15 +6,30 @@ public class TrapRandomMovement : MonoBehaviour
     public float movingTime = 2f;
 
     private float floorX;
-    private float floorY;
+    private float floorZ;
  
     private Vector3 objDirection;
     private Vector3 targPosition;
     private float timer;
 
+    Renderer floor;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        floor = GameObject.Find("Floor").GetComponent<Renderer>();
+        ///Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Trap"), LayerMask.NameToLayer("Stairs"));
+
+        if(floor == null)
+        {
+            Debug.LogError("No floor");
+            return;
+        }
+
+        
+        Debug.Log("Floor centered" + floor.bounds.center);
+        Debug.Log("Floor size: " + floor.bounds.size);
+
         SetNewDirection();
     }
 
@@ -26,16 +41,17 @@ public class TrapRandomMovement : MonoBehaviour
 
     void SetNewDirection()
     {
-        
-        GameObject floor = GameObject.Find("Floor");
 
-        floorX = floor.GetComponent<MeshRenderer>().bounds.size.x;
-        floorY = floor.GetComponent<MeshRenderer>().bounds.size.y;
+        floorX = floor.GetComponent<MeshRenderer>().bounds.size.x /2;
+        floorZ = floor.GetComponent<MeshRenderer>().bounds.size.y / 2;
 
-        float randomX = Random.Range(-floorX / 2, floorY / 2) * transform.localScale.x;
-        float randomZ = Random.Range(-floorX / 2, floorY / 2) * transform.localScale.z;
+        float randomX = Random.Range(-floorX, floorZ) * transform.localScale.x;
+        float randomZ = Random.Range(-floorX, floorZ) * transform.localScale.z;
+
+        Vector3 floorCentered = floor.bounds.center;
+
       
-        targPosition = new Vector3(randomX, 0, randomZ);
+        targPosition = new Vector3(randomX, 1, randomZ);
         //timer = movingTime;
     }
 
