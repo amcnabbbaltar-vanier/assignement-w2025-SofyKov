@@ -8,6 +8,7 @@ TagManager:
   - Star
   - Trap
   - jumpToken
+  - starSurface
   layers:
   - Default
   - TransparentFX
