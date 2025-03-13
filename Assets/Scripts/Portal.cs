@@ -19,6 +19,7 @@ public class Portal : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
+            Destroy(GameObject.FindWithTag("Player"));
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }

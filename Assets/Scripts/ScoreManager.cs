@@ -28,11 +28,7 @@ public class ScoreManager : MonoBehaviour
 
     // Update is called once per frame (not needed for score management, so empty)
     void Update() { }
-
-    // Called to increase score
     
-
-    // Called to decrease the score
     public int Minus()
     {
         totalScore -= score;        // Deduct current level score from total score
@@ -53,66 +49,3 @@ public class ScoreManager : MonoBehaviour
         return totalScore;
     }
 }
-
-
-
-
-
-// using UnityEngine;
-
-// public class ScoreManager : MonoBehaviour
-// {
-//     private static  int totalScore = 0;
-//     private  int score = 0;
-//      public static ScoreManager Instance;
-
-//     // Start is called once before the first execution of Update after the MonoBehaviour is created
-//      void Awake()
-//     {
-//        // totalScore = PlayerPrefs.GetInt("totalScore");
-
-//         if(Instance == null)
-//         {
-//             Instance = this;
-//             DontDestroyOnLoad(gameObject);
-//         }
-//     }
-
-//     void Start()
-//     {
-        
-//     }
-
-//     // Update is called once per frame
-//     void Update()
-//     {
-        
-//     }
-
-//     public void IncrementScore()
-//     {
-//         score += 50;
-//         totalScore = score;
-//         Debug.Log("Score: " + totalScore);
-//         PlayerPrefs.SetInt("totalScore", totalScore);
-//         PlayerPrefs.Save();
-//     }
-
-//     public int minus()
-//     {
-//         totalScore -= score;
-//         score = 0;
-//         PlayerPrefs.SetInt("totalScore", totalScore);
-//         PlayerPrefs.Save();
-//         return totalScore;
-//     }
-
-//     public static int GetTotalScore()
-//     {
-//         Debug.Log("Score1 : " + totalScore);
-//         Debug.Log("Score2 : " + PlayerPrefs.GetInt("totalScore"));
-//         totalScore = PlayerPrefs.GetInt("totalScore");
-//         return totalScore;
-//     }
-
-// }

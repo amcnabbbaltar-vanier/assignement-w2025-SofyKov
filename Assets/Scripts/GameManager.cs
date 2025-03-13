@@ -56,9 +56,9 @@ public class GameManager : MonoBehaviour
     public void levelHandling()
     {
         RestartLevelScore();
-        //Destroy(GameObject.FindWithTag("Player")); // Destroy player on level restart
+        Destroy(GameObject.FindWithTag("Player")); // Destroy player on level restart
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                scoreDisplay = GameObject.Find("ScoreText")?.GetComponent<TextMeshProUGUI>();
+        scoreDisplay = GameObject.Find("ScoreText")?.GetComponent<TextMeshProUGUI>();
 
     }
 

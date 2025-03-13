@@ -10,7 +10,6 @@ public class TrapRandomMovement : MonoBehaviour
  
     private Vector3 objDirection;
     private Vector3 targPosition;
-    private float timer;
 
     Renderer floor;
 
@@ -18,8 +17,7 @@ public class TrapRandomMovement : MonoBehaviour
     void Start()
     {
         floor = GameObject.Find("Floor").GetComponent<Renderer>();
-        ///Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Trap"), LayerMask.NameToLayer("Stairs"));
-
+        
         if(floor == null)
         {
             Debug.LogError("No floor");
@@ -50,9 +48,7 @@ public class TrapRandomMovement : MonoBehaviour
 
         Vector3 floorCentered = floor.bounds.center;
 
-      
         targPosition = new Vector3(randomX, 1, randomZ);
-        //timer = movingTime;
     }
 
     void MoveTrap()
@@ -63,11 +59,5 @@ public class TrapRandomMovement : MonoBehaviour
         {
             SetNewDirection();
         }
-
-        // timer -= Time.deltaTime;
-        // if(timer <= 0)
-        // {
-        //     SetNewDirection();
-        // }
     }
 }
