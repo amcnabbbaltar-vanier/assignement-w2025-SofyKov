@@ -12,6 +12,7 @@ public class AnimatorController : MonoBehaviour
 
     public float duration = 0.30f;
     public static AnimatorController Instance;
+    private float fallLevel = -10f;
 
     void Awake()
     {
@@ -23,6 +24,14 @@ public class AnimatorController : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    public void Update()
+    {
+        if(transform.position.y < fallLevel)
+        {
+            GameManager.Instance.levelHandling();
         }
     }
 
@@ -50,7 +59,6 @@ public class AnimatorController : MonoBehaviour
        
         if(!characterMovement.IsGrounded && characterMovement.jumpCounter == 2 && characterMovement.allowDoubleJump == true)
         {
-            
             EnableDoubleJump(duration);
         }
     }
@@ -65,7 +73,8 @@ public class AnimatorController : MonoBehaviour
 
     public void DisableDoubleJump()
     {
-       // animator.SetBool("allowDoubleJump", false);
+    characterMovement.allowDoubleJump = false;
+       //animator.SetBool("allowDoubleJump", false);
     }
 
 }

@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private static int levelScore = 0;  
     public static GameManager Instance;
 
+
     void Awake()
     {
         if (Instance == null)
@@ -113,7 +114,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("level Score(restartlevel): " +levelScore);
 
         //Rmove score aquiered previously from the total score.
-        
     }
 
 
@@ -128,6 +128,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         FindPLayer();
+
         // Continuously update the score display
     }
 
@@ -138,21 +139,6 @@ public class GameManager : MonoBehaviour
         // PlayerPrefs.SetFloat("PlayerTime", 0f);
         Debug.Log("Done");
     }
-
-    // public void EndScreenHandling()
-    // {
-    //     // scoreDisplay = GameObject.Find("ScoreDisplay")?.GetComponent<TextMeshProUGUI>();
-    //     // starDisplay = GameObject.Find("ScoreDisplay")?.GetComponent<TextMeshProUGUI>();
-    //     // timeDisplay = GameObject.Find("StarDisplay")?.GetComponent<TextMeshProUGUI>();
-
-    //     Debug.Log(PlayerPrefs.GetInt("TotalScore", 0));
-    //     Debug.Log(PlayerPrefs.GetInt("StarScore", 0));
-    //     Debug.Log(PlayerPrefs.GetFloat("PlayerTime", 0));
-
-    //     scoreDisplay.text = "Total score: "+ totalScore;
-    //     starDisplay.text = "Star score: " + (totalScore/50);
-    //     timeDisplay.text = "Total time: " + PlayerPrefs.GetFloat("PlayerTime", 0f);
-    // }
 
     public int GetTotalScore()
     {

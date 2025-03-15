@@ -6,9 +6,19 @@ public class PauseMenuController : MonoBehaviour
 {
     [SerializeField] private GameObject pausMenuPanel;
     private bool isPaused = false;
+    private PauseMenuController Instance;
 
     public void Awake()
     {
+        // if (Instance == null)
+        // {
+        //     Instance = this;
+        //     DontDestroyOnLoad(gameObject);
+        // }
+        // else
+        // {
+        //     Destroy(gameObject);
+        // }
        // pausMenuPanel = pausMenuPanel.GetComponent<GameObject>();    
     }
 
@@ -44,6 +54,7 @@ public class PauseMenuController : MonoBehaviour
 
     public void ResumeGame()
     {
+        Debug.Log("Resume");
         pausMenuPanel.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
@@ -58,6 +69,7 @@ public class PauseMenuController : MonoBehaviour
 
     public void RestartGame()
     {
+        Debug.Log("Restart");
         //Destroy(GameObject.FindWithTag("Player"));
         // pausMenuPanel.SetActive(false);
         // Time.timeScale = 1f;
@@ -75,7 +87,10 @@ public class PauseMenuController : MonoBehaviour
         // else
         // {
            // Application.Quit();
-           SceneManager.LoadScene("MainMenu");
+            Debug.Log("Quit");
+            pausMenuPanel.SetActive(false);
+            Destroy(GameObject.FindWithTag("Player")); 
+            SceneManager.LoadScene("MainMenu");
         // }
         
     }

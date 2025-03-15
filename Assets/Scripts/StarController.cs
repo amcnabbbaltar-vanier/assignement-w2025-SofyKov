@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class StarController: MonoBehaviour
 {
+    public ParticleSystem particles;
+
     void OnTriggerEnter(Collider collider)
     {
         if (collider.CompareTag("Player"))
@@ -12,6 +14,11 @@ public class StarController: MonoBehaviour
 
             //Call the IncrementScore method form the GameManager class/script 
             GameManager.Instance.IncrementStarScore();
+
+            Vector3 contactPoint = transform.position;
+
+            // Instantiate the particle system at the contact point
+            Instantiate(particles, contactPoint, Quaternion.identity);
 
             //Destory star upon collision
             Destroy(gameObject);

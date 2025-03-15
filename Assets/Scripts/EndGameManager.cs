@@ -19,6 +19,11 @@ public class EndGameManager : MonoBehaviour
         timeDisplay.text = "Total time: " + PlayerPrefs.GetFloat("PlayerTime", 0f);
     }
 
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Level1");
+    }
+
     // Update is called once per frame
     void Update()
     {
