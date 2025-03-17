@@ -74,24 +74,17 @@ public class PauseMenuController : MonoBehaviour
         // pausMenuPanel.SetActive(false);
         // Time.timeScale = 1f;
         GameManager.Instance.levelHandling();
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
+        isPaused = false;
     }
 
     public void QuitGame()
     {
-        //  if(Application.isEditor)
-        // {
-        //     UnityEditor.EditorApplication.isPlaying = false;
-        //      SceneManager.LoadScene("MainMenu");
-        // }
-        // else
-        // {
-           // Application.Quit();
-            Debug.Log("Quit");
-            pausMenuPanel.SetActive(false);
-            Destroy(GameObject.FindWithTag("Player")); 
-            SceneManager.LoadScene("MainMenu");
-        // }
-        
+        Debug.Log("Quit");
+        pausMenuPanel.SetActive(false);
+        Destroy(GameObject.FindWithTag("Player")); 
+        SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1f;
+        isPaused = false;
     }
 }

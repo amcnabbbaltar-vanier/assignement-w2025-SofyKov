@@ -75,7 +75,7 @@ public class AnimatorController : MonoBehaviour
 
     public void DisableDoubleJump()
     {
-    characterMovement.allowDoubleJump = false;
+        characterMovement.allowDoubleJump = false;
        //animator.SetBool("allowDoubleJump", false);
     }
 

@@ -125,6 +125,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("Do a flip");
     }
 
+    // public void SetSpeed()
+    // {
+    //     characterMovement = GetComponent<CharacterMovement>();
+    //     characterMovement.speedMultiplier = 5.0f;
+    // }
+
     void Update()
     {
         FindPLayer();

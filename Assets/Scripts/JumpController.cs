@@ -8,11 +8,6 @@ public class JumpController : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            if (GameManager.Instance == null)
-            {
-                Debug.LogError("GameManager is not initialized!");
-                return; // Return early if GameManager is not available
-            }
             GameManager.Instance.ActivatFlip();
 
             Vector3 contactPoint = transform.position;

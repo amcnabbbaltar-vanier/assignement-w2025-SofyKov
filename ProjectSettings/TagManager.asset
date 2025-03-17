@@ -9,6 +9,7 @@ TagManager:
   - Trap
   - jumpToken
   - starSurface
+  - speedToken
   layers:
   - Default
   - TransparentFX
