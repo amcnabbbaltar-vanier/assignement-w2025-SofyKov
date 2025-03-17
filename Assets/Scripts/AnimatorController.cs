@@ -8,7 +8,7 @@ public class AnimatorController : MonoBehaviour
     private Animator animator;
     private CharacterMovement characterMovement;
     private Rigidbody rb;
-    //public bool allowDoubleJump ;
+    public AudioSource audioSource;
 
     public float duration = 0.30f;
     public static AnimatorController Instance;
@@ -39,6 +39,7 @@ public class AnimatorController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         characterMovement = GetComponent<CharacterMovement>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void LateUpdate()
@@ -68,6 +69,7 @@ public class AnimatorController : MonoBehaviour
        // allowDoubleJump = true;
         // animator.SetBool("allowDoubleJump", true);
         animator.SetTrigger("doFlip");
+        audioSource.Play();
         Invoke("DisableDoubleJump", duration);
     }
 
