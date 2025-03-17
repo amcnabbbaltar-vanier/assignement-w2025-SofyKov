@@ -70,7 +70,7 @@ public class AnimatorController : MonoBehaviour
         // animator.SetBool("allowDoubleJump", true);
         animator.SetTrigger("doFlip");
         audioSource.Play();
-        Invoke("DisableDoubleJump", duration);
+        Invoke("DisableDoubleJump", 30f);
     }
 
     public void DisableDoubleJump()
